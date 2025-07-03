@@ -1,0 +1,14 @@
+<div style="padding: 20px;">
+    <h2>Dashboard</h2>
+    <div *ngIf="authService.user(); else loadingUser">
+      <p>Welcome, {{ authService.user()?.firstName }} {{ authService.user()?.lastName }}!</p>
+      <p>Email: {{ authService.user()?.email }}</p>
+    </div>
+    <ng-template #loadingUser>
+      <p>Loading user data...</p>
+    </ng-template>
+
+    <button (click)="testProtectedApi()" style="margin-top: 20px;">Test Protected API</button>
+    <p *ngIf="apiResponse">{{ apiResponse }}</p>
+    <p *ngIf="apiError" style="color: red;">API Error: {{ apiError }}</p>
+  </div>

@@ -1,0 +1,10 @@
+<div style="text-align: center; padding: 50px;">
+    <h2>Login to My App</h2>
+    <button (click)="authService.loginWithGoogle()" [disabled]="authService.isLoading()">
+      Login with Google
+    </button>
+    <div *ngIf="authService.isLoading()" style="margin-top: 10px;">Loading...</div>
+    <div *ngIf="authService.authError()" style="color: red; margin-top: 10px;">
+      {{ authService.authError() }}
+    </div>
+  </div>

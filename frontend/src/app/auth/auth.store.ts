@@ -17,6 +17,7 @@ const TOKEN_EXIPIRY_KEY = "expiresIn";
 const GOOGLE_CLIENT_ID = environment.GOOGLE_CLIENT_ID;
 
 export const AuthStore = signalStore(
+    { providedIn: 'root' },
     withState<AuthState>(initialAuthState),
     withComputed((store) => ({})),
     withMethods((store) => {
@@ -64,7 +65,7 @@ export const AuthStore = signalStore(
                     sessionStorage.setItem('pkce_code_verifier', verifier);
 
                     // Build Google OAuth URL
-                    const googleAuthUrl = new URL('[https://accounts.google.com/o/oauth2/v2/auth](https://accounts.google.com/o/oauth2/v2/auth)');
+                    const googleAuthUrl = new URL('https://accounts.google.com/o/oauth2/v2/auth');
                     googleAuthUrl.searchParams.set('client_id', GOOGLE_CLIENT_ID); // From Google Cloud Console
                     googleAuthUrl.searchParams.set('redirect_uri', 'http://localhost:4200/auth/callback'); // Must match console & Spring Boot config
                     googleAuthUrl.searchParams.set('response_type', 'code');
@@ -160,9 +161,12 @@ export const AuthStore = signalStore(
                 }
             },
 
+            setUser(user: User) {
+                patchState(store, () => {
+                    return { user }
+                });
+            }
         }
-
-
     }),
     withHooks((store) => ({
         onInit() {

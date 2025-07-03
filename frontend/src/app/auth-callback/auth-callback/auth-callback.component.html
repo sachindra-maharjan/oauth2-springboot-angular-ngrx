@@ -1,0 +1,5 @@
+<div style="text-align: center; padding: 50px;">
+    <h2 *ngIf="authService.isLoading()">Authenticating with Google...</h2>
+    <h2 *ngIf="authService.authError()">Authentication Failed!</h2>
+    <p *ngIf="authService.authError()">{{ authService.authError() }}</p>
+  </div>
