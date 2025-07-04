@@ -1305,6 +1305,7 @@ export const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: '**', redirectTo: '/dashboard' },
 ];
+```
 ```typescript
 // src/app/login/login.component.ts
 import { Component, inject } from '@angular/core';
@@ -1331,6 +1332,7 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent {
   authService = inject(AuthService);
 }
+```
 ```typescript
 // src/app/dashboard/dashboard.component.ts
 import { Component, inject, OnInit } from '@angular/core';
