@@ -138,7 +138,7 @@ public class AuthController {
         formData.add("client_id", clientRegistration.getClientId());
         formData.add("client_secret", clientRegistration.getClientSecret());
         formData.add("grant_type", "authorization_code");
-        formData.add("code", authRequest.code()); 
+        formData.add("code", authRequest.authCode()); 
         formData.add("redirect_uri", clientRegistration.getRedirectUri());
         formData.add("code_verifier", authRequest.codeVerifier()); // PKCE
 

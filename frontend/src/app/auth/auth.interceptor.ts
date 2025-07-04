@@ -8,7 +8,14 @@ export const authInterceptor: HttpInterceptorFn = (req:
     next: HttpHandlerFn): Observable<HttpEvent<any>> => {
 
     const authStore = inject(AuthStore);
-    const accessToken = authStore.token() // Get the current access token (your backend's JWT)
+    const accessToken = authStore.accessToken() // Get the current access token (your backend's JWT)
+
+    console.log('Auth Interceptor:', {
+        url: req.url,
+        method: req.method,
+        accessToken: accessToken, // Log if token is present
+        headers: req.headers.keys(),
+    });
     
     // Only add header for requests to your backend's API
     if (accessToken && req.url.startsWith('http://localhost:8080/api')) {

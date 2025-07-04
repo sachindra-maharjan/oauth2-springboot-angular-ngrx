@@ -1,6 +1,6 @@
 import { signalStore, withComputed, withHooks, withMethods, withState, patchState } from '@ngrx/signals'
 import { AuthState, initialAuthState, User } from './auth.model';
-import { effect, inject, PLATFORM_ID } from '@angular/core';
+import { inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { environment } from '../environment';
 // IMPORTANT: For production, use a more robust PKCE library or Web Cryptography API

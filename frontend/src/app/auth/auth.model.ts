@@ -9,7 +9,7 @@ export interface User {
 
 export interface AuthState {
     user: User | null;
-    token: string | null;
+    accessToken: string | null;
     expiresIn: number;
     isAuthenticated: boolean;
     isLoading: boolean;
@@ -18,7 +18,7 @@ export interface AuthState {
 
 export const initialAuthState: AuthState = {
     user: null,
-    token: null,
+    accessToken: null,
     expiresIn: 0,
     isAuthenticated: false,
     isLoading: false,
